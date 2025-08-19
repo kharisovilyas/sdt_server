@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+#error-container {
+    margin-top: 10px;
+}
+
+.error-notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+}
+
+.error-notification.high {
+    background-color: #dc3545; /* Красный для HIGH (401, 400) */
+}
+
+.error-notification.medium {
+    background-color: #ffc107; /* Жёлтый для MEDIUM (404) */
+    color: #333; /* Тёмный текст для лучшей читаемости */
+}
+
+.error-notification.low {
+    background-color: #6c757d; /* Серый для LOW (500 и другие) */
+}
+
+.error-notification .close-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.error-notification .close-btn:hover {
+    color: #ddd;
+}

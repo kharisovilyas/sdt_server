@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Получение TLE по NORAD ID</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<h1>Получить TLE по NORAD ID</h1>
+
+<form id="tleForm">
+    <label for="noradId">Введите NORAD ID:</label>
+    <input type="number" id="noradId" name="noradId" min="1" required />
+    <button type="submit">Получить TLE</button>
+</form>
+
+<div id="error-container"></div>
+<pre id="result"></pre>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
