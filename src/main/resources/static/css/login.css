@@ -1,0 +1,133 @@
+/* Космический градиент + звезды */
+body.cosmic-bg {
+    background: radial-gradient(ellipse at 80% 20%, #232e51 0%, #1e194c 60%, #120a2a 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Звезды */
+body.cosmic-bg::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+            radial-gradient(white 0.8px, transparent 1.2px),
+            radial-gradient(white 0.5px, transparent 1px),
+            radial-gradient(white 1px, transparent 1.6px);
+    background-size: 1200px 800px, 800px 600px, 1800px 1200px;
+    background-position: 0 0, 400px 200px, 900px 500px;
+    opacity: 0.17;
+    animation: starsMove 60s linear infinite;
+}
+@keyframes starsMove {
+    0% { background-position: 0 0, 400px 200px, 900px 500px; }
+    100% { background-position: 100px 100px, 500px 300px, 1100px 700px; }
+}
+
+/* Стеклянная форма логина */
+.cosmic-glass {
+    background: rgba(40, 46, 80, 0.83);
+    backdrop-filter: blur(12px) saturate(140%);
+    border: 1.7px solid rgba(128,185,255,0.22);
+    box-shadow: 0 8px 40px -10px #2b3369;
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Форма и инпуты */
+.cosmic-glass label {
+    color: #b4caff;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    display: block;
+    letter-spacing: 0.04em;
+}
+.cosmic-glass input, .cosmic-glass select {
+    width: 100%;
+    border: 1.2px solid #4f72b6;
+    border-radius: 0.8rem;
+    background: rgba(255,255,255,0.13);
+    color: #e0eaff;
+    font-size: 1.12rem;
+    font-family: inherit;
+    padding: 0.73rem 1.05rem;
+    margin-bottom: 1.2rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.cosmic-glass input:focus, .cosmic-glass select:focus {
+    border: 1.6px solid #60a5fa;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 0 2px #60a5fa55;
+    color: #fff;
+}
+.cosmic-glass select {
+    cursor: pointer;
+    margin-bottom: 1.1rem;
+}
+
+/* Кнопка */
+#loginBtn {
+    background: linear-gradient(90deg, #378fff 0%, #7a7fff 100%);
+    color: #fff;
+    font-size: 1.22rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.9rem;
+    padding: 0.82rem 0;
+    margin-top: 0.2rem;
+    box-shadow: 0 2px 16px -6px #33415599;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.13s;
+}
+#loginBtn:hover {
+    background: linear-gradient(90deg, #2867bc 0%, #5e53a6 100%);
+    transform: scale(1.03);
+}
+
+/* Ошибка */
+#loginError {
+    background: rgba(255, 62, 62, 0.10);
+    border-left: 4px solid #f87171;
+    color: #f87171;
+    font-size: 1.08rem;
+    border-radius: 0.4rem;
+    margin-top: 1.1rem;
+    padding: 0.8rem 1.1rem;
+    animation: shake 0.16s 2;
+    text-shadow: 0 1px 7px #1e194c22;
+}
+@keyframes shake {
+    0% { transform: translateX(0);}
+    25% { transform: translateX(-4px);}
+    50% { transform: translateX(4px);}
+    75% { transform: translateX(-4px);}
+    100% { transform: translateX(0);}
+}
+
+/* Заголовок */
+.cosmic-glass h1 {
+    color: #7ab8ff;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-shadow: 0 2px 12px #1e194c55;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .cosmic-glass {
+        padding: 1.1rem 0.7rem;
+        border-radius: 1.1rem;
+    }
+    .cosmic-glass h1 {
+        font-size: 1.2rem;
+    }
+}

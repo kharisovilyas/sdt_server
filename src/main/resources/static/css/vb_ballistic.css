@@ -1,0 +1,481 @@
+/* 🌌 КОСМИЧЕСКИЙ ГРАДИЕНТ + АНИМАЦИЯ ЗВЁЗД */
+body.cosmic-bg {
+    background: radial-gradient(ellipse at 80% 20%, #1a1f3b 0%, #101035 60%, #070622 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    color: #e0e8ff;
+}
+
+body.cosmic-bg::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(white 0.7px, transparent 1.2px),
+    radial-gradient(white 0.6px, transparent 1px),
+    radial-gradient(white 1px, transparent 1.8px);
+    background-size: 1200px 800px, 800px 600px, 1600px 1200px;
+    background-position: 0 0, 400px 200px, 900px 500px;
+    opacity: 0.18;
+    animation: starsMove 80s linear infinite;
+}
+
+@keyframes starsMove {
+    0% {
+        background-position: 0 0, 400px 200px, 900px 500px;
+    }
+    100% {
+        background-position: 300px 300px, 600px 400px, 1200px 800px;
+    }
+}
+
+/* 🧊 ГЛАССМОРФИЗМ-КОНТЕЙНЕР */
+.glassmorphism-container {
+    position: relative;
+    background: rgba(35, 42, 79, 0.45);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1.5px solid rgba(128, 185, 255, 0.22);
+    box-shadow: 0 0 60px -10px rgba(64, 125, 255, 0.3);
+    width: 90%;
+    max-width: 95em;
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    overflow: visible;
+    transition: all 0.4s ease;
+    justify-content: center;
+}
+
+.glassmorphism-container.modal-open {
+    max-width: 95em;
+    box-shadow: 0 0 80px -10px rgba(99, 102, 241, 0.45);
+}
+
+/* ✨ ГЛАВНЫЙ КОНТЕНТ */
+.main-content {
+    flex: 1;
+    padding: 3rem 4rem;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    transition: margin-left 0.4s ease;
+}
+
+.glassmorphism-container.modal-open .main-content {
+    margin-left: 0;
+    flex: 0 0 calc(100% - 52em);
+    transition: flex-basis 0.4s ease;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 15px rgba(147, 197, 253, 0.4);
+    margin-bottom: 1.5rem;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #60a5fa80, 0 0 25px #6366f180;
+    }
+    50% {
+        text-shadow: 0 0 20px #60a5fa, 0 0 45px #6366f1;
+    }
+}
+
+.main-description {
+    text-align: center;
+    color: #bfdbfe;
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+/* 🧮 ПРОГРЕСС-БАР */
+.progress-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.75rem;
+    border-radius: 9999px;
+    background: rgba(219, 234, 254, 0.15);
+    border: 1px solid rgba(147, 197, 253, 0.4);
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.4);
+    width: 100%;
+    max-width: 600px;
+}
+
+.progress-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #6366f1, #a78bfa);
+    background-size: 200% 100%;
+    transition: width 0.4s ease;
+    border-radius: 9999px;
+}
+
+.progress-bar-fill.completed {
+    animation: none;
+    background: #3b82f6;
+}
+
+@keyframes progressFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.progress-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #f0f9ff;
+    font-weight: 600;
+    text-shadow: 0 1px 4px #0008;
+}
+
+.expand-progress {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.expand-progress:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.expand-progress.expanded .expand-icon {
+    transform: rotate(180deg);
+    color: #a5b4fc;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.expand-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: #93c5fd;
+}
+
+/* 🚀 КНОПКА "ЗАПУСК" */
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #2563eb, #4f46e5, #7c3aed);
+    background-size: 200% 100%;
+    color: #fff;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+    padding: 0.9rem 1.25rem;
+    box-shadow: 0 8px 25px -6px rgba(79, 70, 229, 0.5);
+    margin: 1rem auto 0;
+}
+
+.submit-button:hover {
+    background-position: 100% 0;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px -6px rgba(79, 70, 229, 0.7);
+}
+
+.submit-button:disabled {
+    background: linear-gradient(90deg, #4b5563, #6b7280);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.submit-button:disabled .rocket-icon {
+    animation: none;
+}
+
+.rocket-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* КАРТОЧКИ СПУТНИКОВ */
+.response-container {
+    margin-top: 2rem;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 0.5rem;
+    align-items: center;
+}
+
+.sat-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(147, 197, 253, 0.25);
+    border-radius: 1rem;
+    max-width: min-content;
+    margin: 0 auto 1rem;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 25px -8px rgba(99, 102, 241, 0.5);
+}
+
+.sat-card-title {
+    color: #93c5fd;
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+/* 🧠 TEXTAREA */
+#promptInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 0.9rem 1.1rem;
+    font-size: 1.1rem;
+    border-radius: 0.75rem;
+    border: none;
+    outline: none;
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f8fafc;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.2);
+    resize: none;
+    min-height: 50px;
+    margin: 0 auto;
+}
+
+#promptInput:focus {
+    box-shadow: 0 0 0 2px #60a5fa, 0 0 20px #60a5fa60;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+#promptInput::placeholder {
+    color: #9ca3af;
+}
+
+/* 💫 МОДАЛКА */
+#progressModal {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    max-height: -webkit-fill-available;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 38em;
+    background: rgba(17, 24, 39, 0.95);
+    border-left: 1.5px solid rgba(147, 197, 253, 0.3);
+    opacity: 0;
+    box-shadow: -10px 0 40px -10px rgba(79, 70, 229, 0.6);
+    transform: translateX(100%);
+    transition: width 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+.progress-stages {
+    flex: 1; /* занимает оставшееся пространство */
+    overflow-y: auto; /* включаем вертикальный скролл */
+    overflow-x: hidden; /* отключаем горизонтальный */
+    padding: 1rem 1.5rem;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: rgba(147,197,253,0.5) transparent;
+}
+
+/* Chrome, Edge */
+.progress-stages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.progress-stages::-webkit-scrollbar-thumb {
+    background: rgba(147,197,253,0.5);
+    border-radius: 6px;
+}
+
+.progress-stages::-webkit-scrollbar-thumb:hover {
+    background: rgba(147,197,253,0.8);
+}
+
+.response-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.response-container::-webkit-scrollbar-thumb {
+    background: rgba(147,197,253,0.5);
+    border-radius: 6px;
+}
+
+.response-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(147,197,253,0.8);
+}
+
+#progressModal.open {
+    width: 38em;
+    opacity: 1;
+    padding: 2rem;
+    transform: translateX(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    color: #f0f9ff;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: #fff;
+}
+
+/* АККОРДЕОНЫ ДЛЯ ЛОГОВ */
+.accordion {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(147, 197, 253, 0.2);
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    color: #93c5fd;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-content {
+    display: none;
+    padding: 1rem;
+    color: #e0e8ff;
+}
+
+.accordion-content p {
+    margin: 0.5rem 0;
+}
+
+.sub-accordion {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.sub-accordion-header {
+    cursor: pointer;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0.5rem;
+    color: #bfdbfe;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-accordion-content {
+    display: none;
+    padding: 0.75rem 1rem;
+    color: #e0e8ff;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+.accordion-header .arrow.open {
+    transform: rotate(180deg);
+}
+
+.sub-accordion-header .arrow.open {
+    transform: rotate(180deg);
+}
+
+/* МЕДИА-АДАПТАЦИЯ */
+@media (max-width: 768px) {
+    .glassmorphism-container {
+        flex-direction: column;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        width: 95%;
+    }
+
+    .glassmorphism-container.modal-open .main-content {
+        flex: 1 1 100%;
+    }
+
+    #progressModal.open {
+        width: 100%;
+        transform: translateX(0);
+    }
+
+    .progress-bar {
+        width: 100%;
+    }
+
+    #promptInput {
+        max-width: 100%;
+    }
+
+    .submit-button {
+        max-width: 100%;
+    }
+
+    .response-container {
+        max-height: 300px;
+    }
+}

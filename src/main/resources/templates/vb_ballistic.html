@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виртуальный Баллистик</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/vb_ballistic.css}">
+</head>
+<body class="cosmic-bg">
+<div class="glassmorphism-container">
+    <div id="mainContent" class="main-content">
+        <h1 class="main-title">
+            Виртуальный Баллистик
+        </h1>
+        <p class="main-description">Введите запрос, чтобы подобрать подходящие космические аппараты</p>
+        <!-- Прогресс-бар по центру -->
+        <div id="progressBarWrapper" class="progress-bar-wrapper hidden">
+            <div class="progress-bar">
+                <div id="progressBarFill" class="progress-bar-fill" style="width:0%"></div>
+                <div id="progressBarText" class="progress-bar-text"></div>
+                <button id="expandProgress" class="expand-progress" title="Показать этапы">
+                    <svg class="expand-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l6 6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="input-container">
+            <label for="promptInput"></label><textarea
+                id="promptInput"
+                placeholder="Например: спутники для наблюдения за погодой"
+                rows="1"
+                class="prompt-input"
+        ></textarea>
+        </div>
+        <button id="submitButton" class="submit-button">
+            <svg id="rocketIcon" class="rocket-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/>
+            </svg>
+            Запуск
+        </button>
+        <div id="responseContainer" class="response-container"></div>
+    </div>
+
+    <!-- Модальное окно для отображения этапов прогресса -->
+    <div id="progressModal" class="progress-modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Этапы задачи</h2>
+        </div>
+        <div id="progressStages" class="progress-stages"></div>
+    </div>
+</div>
+<script th:src="@{/js/vb_ballistic.js}"></script>
+</body>
+</html>

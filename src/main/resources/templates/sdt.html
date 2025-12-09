@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виртуальный Баллистик — AI Космические Аппараты</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/css/vb_ballistic.css}">
+</head>
+<body class="min-h-screen flex items-center justify-center cosmic-bg">
+<div class="glassmorphism-container w-full max-w-xl p-8 rounded-xl shadow-xl">
+    <h1 class="text-3xl font-extrabold mb-6 text-center text-white tracking-wide drop-shadow-lg">
+        Виртуальный Баллистик
+    </h1>
+    <p class="mb-8 text-center text-blue-200 text-lg">Введите запрос, чтобы подобрать подходящие космические аппараты</p>
+    <!-- Большой прогресс-бар над полем ввода -->
+    <div id="progressBarWrapper" class="w-full mb-6 hidden">
+        <div class="relative h-7 w-full rounded-full bg-blue-100 border border-blue-200 overflow-hidden shadow">
+            <div id="progressBarFill" class="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-400 to-indigo-500 transition-all duration-300 rounded-full" style="width:0%"></div>
+            <div id="progressBarText" class="absolute w-full text-center text-blue-900 font-semibold text-md leading-[1.75rem] select-none"></div>
+            <button id="expandProgress" class="absolute right-2 top-0.5 px-2 py-0.5 rounded hover:bg-blue-200 text-blue-700 text-xs" title="Показать этапы">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8l4 4 4-4"/></svg>
+            </button>
+        </div>
+    </div>
+    <div class="mb-6">
+        <label for="promptInput"></label><textarea
+                id="promptInput"
+                placeholder="Например: спутники для наблюдения за погодой"
+                rows="1"
+                class="resize-none w-full p-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-400 bg-white/80 text-gray-900 placeholder-gray-400 shadow-md text-lg leading-snug transition-all min-h-[48px] max-h-48"
+                style="overflow-y:auto;"
+        ></textarea>
+    </div>
+    <button
+            id="submitButton"
+            class="flex items-center justify-center px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-500 text-white rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-indigo-600 focus:outline-none transition-all shadow-lg w-full"
+    >
+        <svg id="rocketIcon" class="w-6 h-6 mr-2 -ml-1 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/>
+        </svg>
+        Запуск
+    </button>
+    <div id="responseContainer" class="mt-4 space-y-4"></div>
+</div>
+
+<!-- Модальное окно для отображения этапов прогресса -->
+<div id="progressModal" class="fixed top-0 right-0 w-1/3 h-full bg-gray-800 bg-opacity-90 p-6 overflow-y-auto hidden shadow-lg z-50">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-white">Этапы задачи</h2>
+        <button id="closeModal" class="text-white hover:text-gray-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </div>
+    <div id="progressStages" class="space-y-4"></div>
+</div>
+
+<script th:src="@{/js/vb_ballistic.js}"></script>
+</body>
+</html>

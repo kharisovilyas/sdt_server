@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/sdt_styles.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-900 to-indigo-700 flex items-center justify-center">
+<div class="bg-white/80 p-8 rounded-xl shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4 text-center text-blue-900">Вход в систему</h1>
+    <form id="loginForm" class="space-y-4">
+        <div>
+            <label for="username" class="block text-blue-900">Логин</label>
+            <input type="text" id="username" name="username" required class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+            <label for="password" class="block text-blue-900">Пароль</label>
+            <input type="password" id="password" name="password" required class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+            <label for="landingPage" class="block text-blue-900">Куда перейти после входа?</label>
+            <select id="landingPage" name="landingPage" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400">
+                <option value="/sdt">Конфигуратор (SDT)</option>
+                <option value="/vb">Виртуальный Баллистик (VB)</option>
+            </select>
+        </div>
+        <button type="submit" id="loginBtn" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+            Войти
+        </button>
+        <div id="loginError" class="text-red-600 mt-3 text-center hidden"></div>
+    </form>
+</div>
+<script th:src="@{/js/login.js}"></script>
+</body>
+</html>
