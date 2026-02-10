@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Устанавливаем значения по умолчанию
+    document.getElementById('username').value = 'designer';
+    document.getElementById('password').value = 'password';
+});
+
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const loginBtn = document.getElementById('loginBtn');
